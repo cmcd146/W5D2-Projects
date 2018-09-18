@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
     if @user 
-      login(user)
+      login(@user)
       redirect_to user_url(@user)
     else 
       flash.now[:errors] = ["Wrong credentials!"]

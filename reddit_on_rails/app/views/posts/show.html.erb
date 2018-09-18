@@ -1,2 +1,12 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1><%= @post.title %></h1>
+
+<% if @post.url.length > 0 %>
+<a href="<%= @post.url %>">Link</a>
+<% end %>
+
+<% if @post.content.length > 0%>
+<p><%= @post.content %></p>
+<% end %>
+
+<a href="<%= edit_post_url(@post) %>">Edit this post</a>
+

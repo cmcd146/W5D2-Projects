@@ -12,8 +12,13 @@
 class PostSub < ApplicationRecord
   validates :post_id, uniqueness: { scope: :sub_id }
   
-  belongs_to :post
-  belongs_to :sub
+  belongs_to :post,
+  foreign_key: :post_id,
+  class_name: :Post
+  
+  belongs_to :sub,
+  foreign_key: :sub_id,
+  class_name: :Sub
   
   has_many :post_url
 end
