@@ -6,7 +6,6 @@
 #  title      :string           not null
 #  url        :string
 #  content    :text
-#  sub_id     :integer          not null
 #  author_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -28,4 +27,6 @@ class Post < ApplicationRecord
   has_many :subs,
   through: :post_subs,
   source: :sub
+  
+  has_many :comments
 end

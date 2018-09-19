@@ -1,7 +1,7 @@
 <h1><%= @post.title %></h1>
 
 <% if @post.url.length > 0 %>
-<a href="<%= @post.url %>">Link</a>
+<a href="https://www.<%= @post.url %>"><%= @post.url %></a>
 <% end %>
 
 <% if @post.content.length > 0%>
@@ -9,4 +9,23 @@
 <% end %>
 
 <a href="<%= edit_post_url(@post) %>">Edit this post</a>
+
+<% if @post.comments.where(parent_comment_id: nil).length > 0 %>
+<h2>Comments</h2>
+<ul>
+  <% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <li> <a href="<%= comment_url(comment) %>"><%= comment.content %></a> - <%= comment.author.username %>
+    <% if comment.child_comments.length > 0 %>
+    <ul>
+      <% comment.child_comments.each do |child| %>
+        <li><%= child.content %> - <%= child.author.username %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+<a href="<%= new_post_comment_url(@post) %>">Add Comment</a>
 

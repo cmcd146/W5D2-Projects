@@ -10,4 +10,4 @@ steve = User.create(username: "Steve", password: "123456")
 
 cat_sub = Sub.create(title: "Cats", description: "Lots of Cats", moderator_id: steve.id)
 
-cat_post = Post.create(title: "Kittens", author_id: steve.id, sub_ids: [cat_sub.id])
+cat_post = Post.create(title: "Kittens", url: "", content: "", author_id: steve.id, sub_ids: [cat_sub.id])
